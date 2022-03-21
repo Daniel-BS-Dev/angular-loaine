@@ -4,7 +4,6 @@ import { PageCursosComponent } from './page-cursos/page-cursos.component';
 import { PageDetalheComponent } from './page-detalhe/page-detalhe.component';
 
 
-
 @NgModule({
   declarations: [
     PageCursosComponent,
@@ -15,6 +14,7 @@ import { PageDetalheComponent } from './page-detalhe/page-detalhe.component';
   ],
   exports: [
     PageCursosComponent // desta forma eu deixo meu component visivel para outras components
-  ]
+  ],
+
 })
 export class CursosModule { }

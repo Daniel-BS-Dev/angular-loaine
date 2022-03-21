@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CursosService } from '../cursos.service';
 
 @Component({
   selector: 'app-page-detalhe',
@@ -9,14 +10,17 @@ export class PageDetalheComponent implements OnInit {
 
   urlbase : string;
 
-  cursos: string[] = ['Java', 'C#', 'C++', 'C', 'Javascript',];
+  cursos: string[];
 
-  constructor() {
+  constructor(private service: CursosService) {
     this.urlbase = "https://daniel.com.br";
     
+    this.cursos = this.service.getCursos();
    }
 
   ngOnInit(): void {
   }
+
+  
 
 }
