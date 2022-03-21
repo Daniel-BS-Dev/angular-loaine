@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstPageComponent } from './first-page/first-page.component';
+import { CursosModule } from './cursos/cursos.module';
+
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { FirstPageComponent } from './first-page/first-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CursosModule, // como eu criei module novo tenho que fazer o import aqui
   ],
   providers: [],
   bootstrap: [AppComponent]
