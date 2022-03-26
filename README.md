@@ -35,3 +35,21 @@ npm install ng2-bootstrap bootstrap --save
 - ngAfterContentChecked - a cada verificação de conteúdo inserido
 - ngAfterViewChecked - a cada verificação de conteúdo/ conteúdo filho
 - ngOnDestroy - antes de diretiva/component ser destruido
+
+## Criando Arquivo
+- COMPONENT - ng g component meu-component
+- SERVICE - ng g s component meu-service
+- DIRECTIVE - ng g d component minha-directive
+- PIPE - ng g p component meu-pipe
+- CLASS - ng g class component minha-classe
+- INTERFACE - ng g interface minha-interface
+- ENUM - ng g enum meu-enum
+
+## Modificando a folha de estilo
+- ng set defaults.styleExt scss
+- ng set defaults.styleExt less
+- ng set defaults.styleExt styl
+
+## Comando de ajuda no cli
+- ng lint - nos ajuda a encontra error como ponto e virgula...
+- ng test - vai executar os teste 
