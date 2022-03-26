@@ -26,3 +26,12 @@ npm install ng2-bootstrap bootstrap --save
 - properte binding - [propriedade]="valor" conseguimos ter a saida do componente para o template
 - (evento)="handler" - escutar eventos no template
 - [(ngModel)] - conseguimos manter tanto o template quanto o component atualizados
+
+## Ciclo de Vida
+- ngOnChanges - antes #2 e quando valor property-binding é atualizado
+- ngOnInit - quando Component é iniciado
+- ngDoCheck - A cada ciclo de verificação de mudanças
+- ngAfterContentInit - de´pois de inserir conteúdo extrno view
+- ngAfterContentChecked - a cada verificação de conteúdo inserido
+- ngAfterViewChecked - a cada verificação de conteúdo/ conteúdo filho
+- ngOnDestroy - antes de diretiva/component ser destruido
