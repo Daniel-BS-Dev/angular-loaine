@@ -1,5 +1,15 @@
 # angular-loaine
 
+## Comando para instalar o Bootstrap
+`
+npm install ng2-bootstrap bootstrap --save
+`
+### angular.json no styles
+`
+ "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+`
+
+
 ## Bloco Principais
 - Componentes
 - Diretivas - responsavel por modificar o dom
