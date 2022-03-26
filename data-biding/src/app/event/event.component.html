@@ -1,0 +1,14 @@
+
+<p  (click)="getClicou()" class="btn btn-primary">click em mim</p>
+<input #campoInput 
+(keyup)="onKeyUp($event)" 
+(keyup.enter)="valorSalvo(campoInput.value)"
+(blur)="valorSalvo(campoInput.value)"/>
+
+<p>valor:</p>
+<p>valor: {{ value }}</p>
+
+<span
+ (mouseover)="onMouseOverOut()"
+ (mouseout)="onMouseOverOut()"
+ [class.highlight]="ismouse">Passe o mouse em mim</span>

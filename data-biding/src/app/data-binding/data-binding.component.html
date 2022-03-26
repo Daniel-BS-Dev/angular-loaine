@@ -1,0 +1,43 @@
+<section>
+    <article>
+        <h1>Interface {{ url }}</h1>
+        <h2>Resulto 1 + 1: {{ 1 + 1 }}</h2>
+        <h3>resultado 1 + 1: {{ 1 + getValue() }}</h3>
+        <h4>resultado 1 + 1: {{ 1 && 1 }}</h4>
+    </article>
+
+    <article>
+        <h3>Property Binding</h3>
+        <img src="{{ urlImage }}" alt="nature"/> <!-- interpolação -->
+        <img [src]="urlImage" alt="nature"/>     <!-- properte binding -->
+    </article>
+</section>
+
+<app-cursos></app-cursos>
+<app-event></app-event>
+
+<div>
+    <select #classe (change)="0">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Alerta</option>
+        <option value="alert-danger">Erro</option>
+    </select>
+
+    <div class="alert" role="alert"
+     [class.alert-success]="classe.value == 'alert-success'">
+        sucesso
+    </div>
+    <div class="alert" role="alert"
+    [class.alert-info]="classe.value == 'alert-info'">
+        Info
+    </div>
+    <div class="alert" role="alert"
+    [class.alert-warning]="classe.value == 'alert-warning'">
+       Alert
+    </div>
+    <div class="alert" role="alert"
+    [class.alert-danger]="classe.value == 'alert-danger'">
+       Erro
+    </div>
+</div>
