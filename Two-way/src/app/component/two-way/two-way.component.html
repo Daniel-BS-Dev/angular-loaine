@@ -1,0 +1,22 @@
+<section>
+  <article>
+    <h3>Two-way data binding</h3>
+    <div>
+        <input type="text" [value]="name" 
+        (input)="name = $event.target.value"
+        
+        />
+  
+        <form (ngSubmit)="name">
+            <input type="text" [(ngModel)]="person.name" name="nome"/> <!-- quando eu uso o ngModel não preciso especificar o target.value -->
+            <input type="text" [(ngModel)]="person.age" name="ano"/>
+        </form>
+      
+      <p>Você digitou: {{ name }}</p>
+    </div>
+
+   
+  </article>
+</section>
+
+<app-reusando-input [name]="nameCourse"></app-reusando-input> <!-- recebendo a varivel criada no resuando-input -->
