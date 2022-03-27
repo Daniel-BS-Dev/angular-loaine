@@ -53,3 +53,7 @@ npm install ng2-bootstrap bootstrap --save
 ## Comando de ajuda no cli
 - ng lint - nos ajuda a encontra error como ponto e virgula...
 - ng test - vai executar os teste 
+
+## Quando usar o hidden e o ngIf
+- hidden - recomendado para árvore de elementos pequenas
+- ngIf - recomendado para árvore de elemento grandes
