@@ -26,3 +26,34 @@ npm install ng2-bootstrap bootstrap --save
 - properte binding - [propriedade]="valor" conseguimos ter a saida do componente para o template
 - (evento)="handler" - escutar eventos no template
 - [(ngModel)] - conseguimos manter tanto o template quanto o component atualizados
+
+## Ciclo de Vida
+- ngOnChanges - antes #2 e quando valor property-binding é atualizado
+- ngOnInit - quando Component é iniciado
+- ngDoCheck - A cada ciclo de verificação de mudanças
+- ngAfterContentInit - de´pois de inserir conteúdo extrno view
+- ngAfterContentChecked - a cada verificação de conteúdo inserido
+- ngAfterViewChecked - a cada verificação de conteúdo/ conteúdo filho
+- ngOnDestroy - antes de diretiva/component ser destruido
+
+## Criando Arquivo
+- COMPONENT - ng g component meu-component
+- SERVICE - ng g s component meu-service
+- DIRECTIVE - ng g d component minha-directive
+- PIPE - ng g p component meu-pipe
+- CLASS - ng g class component minha-classe
+- INTERFACE - ng g interface minha-interface
+- ENUM - ng g enum meu-enum
+
+## Modificando a folha de estilo
+- ng set defaults.styleExt scss
+- ng set defaults.styleExt less
+- ng set defaults.styleExt styl
+
+## Comando de ajuda no cli
+- ng lint - nos ajuda a encontra error como ponto e virgula...
+- ng test - vai executar os teste 
+
+## Quando usar o hidden e o ngIf
+- hidden - recomendado para árvore de elementos pequenas
+- ngIf - recomendado para árvore de elemento grandes
