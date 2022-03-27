@@ -1,0 +1,30 @@
+<ul *ngIf="courses.length > 0" > <!-- usando listas -->
+    <li>{{ courses  }}</li>
+</ul>
+
+<div *ngIf="showCourses"> <!-- usando variavel boolean -->
+   Lista de cursos aqui.
+   <li>{{ courses  }}</li>
+</div>
+
+<div *ngIf="!showCourses">
+   Não tem cursos para mostrar
+ </div>
+
+ <button (click)="onShowCourses()">
+   mostrar cursos
+  </button>
+
+  <h1>Outra maneira de mostrar e esconder o elemento</h1>
+  <div [hidden]="!showCourses"> <!-- mostrar elemento com um click -->
+    Lista de cursos aqui.
+    <li>{{ courses  }}</li>
+ </div>
+ 
+ <div [hidden]="showCourses"><!-- esconder com um click -->
+    Não tem cursos para mostrar
+  </div>
+ 
+  <button (click)="onShowCourses()">
+    mostrar cursos
+   </button>

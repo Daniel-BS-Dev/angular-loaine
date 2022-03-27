@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ClicloComponent } from './component/cliclo/cliclo.component';
+import { ComponentComponent } from './component/component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClicloComponent
+    ComponentComponent
   ],
   imports: [
     BrowserModule

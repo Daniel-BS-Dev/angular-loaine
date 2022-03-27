@@ -6,15 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  value: number = 5;
-  destroy: boolean = false;
-
-  changeValue(){
-    this.value ++;
-  }
-
-  destruir(){
-    this.destroy=true;
-  }
-  
+  title = 'directives';
 }
