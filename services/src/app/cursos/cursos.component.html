@@ -1,0 +1,8 @@
+<input type="text" #inputCourse>
+<button (click)="addCourse(inputCourse.value)">Add Course</button>
+
+<ul *ngFor="let item of courses">
+    <li>{{ item }}</li>
+</ul>
+
+<p>Ultimo curso criado: {{ course }}</p>

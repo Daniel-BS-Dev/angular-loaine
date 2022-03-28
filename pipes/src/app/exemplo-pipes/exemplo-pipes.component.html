@@ -1,0 +1,11 @@
+<h1>Exemplo de Pipes</h1>
+
+<p >Titulo: {{ book.title | uppercase | pipesCustumizado }}</p>
+<p>Estrelas: {{ book.rating | number:'2.1-2' }}</p> <!-- 04 com no minino 1 casa decimale no maxino 2-->
+<p>Páginas: {{ book.numberOfPage | number  }}</p>
+<p>Preço: {{ book.price | currency: 'BRL'  }}</p>
+<p>Data: {{ book.date | date:'short' }}</p>
+<p>Data: {{ book.date | date:'dd-MM-yyyy' }}</p>
+<p>Url: {{ book.url  }}</p>
+<br>
+<p>Titulo: {{ book | json }}</p>
