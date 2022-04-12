@@ -19,5 +19,35 @@ ng g m nome
 [(ngModel)]="propriedade" - matem tanto o template quanto o componente atualizado
 
 ## Exemplo de como usar
+``````
 - <img src="{{ urlImage }}">
 - <img [src]="urlImage">
+``````
+
+## Properte biding class
+``````
+<select #myvalue (change)="0">
+    <option value="success">sucesso</option>
+    <option value="info">informação</option>
+    <option value="danger">perigo</option>
+</select>
+
+<br/><br/><br/><br/>
+
+<div [class.success]="myvalue.value == 'success'">
+    sucesso
+</div>
+<div [class.info]="myvalue.value == 'info'">
+    informação
+</div>
+<div [class.danger]="myvalue.value == 'danger'">
+    perigo
+</div>
+
+usando interpolação
+
+<div class="{{ myvalue.value }} ">
+    sucesso
+</div>
+
+``````
