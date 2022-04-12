@@ -50,4 +50,10 @@ usando interpolação
     sucesso
 </div>
 
+mostrando e escondendo a div
+<div [style.display]="myvalue == 'danger' ? 'block' : 'none'">
+    sucesso
+</div>
+
+
 ``````
