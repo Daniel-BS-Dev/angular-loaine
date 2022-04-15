@@ -57,3 +57,28 @@ mostrando e escondendo a div
 
 
 ``````
+
+## Directive Background
+``````
+
+@Directive({
+  selector: '[appDirectBackground]' -> nome que vou usar
+})
+export class DirectBackgroundDirective {
+
+  // ouvindo um evento
+  @HostListener('mouseenter') onMouseOver(){  -> evento aconteceu
+    this.background='yellow';
+  }
+
+  @HostListener('mouseleave') onMouseLeave(){   -> evento aconteceu
+   this.background='white';
+  }
+
+  // mudando o background
+  @HostBinding('style.backgroundColor') background: string=''; -> o que eu vou fazer quando acontecer o evento
+
+  constructor() { }
+
+}
+``````
