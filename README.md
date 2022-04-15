@@ -115,3 +115,46 @@ export class DirectBackgroundDirective {
   }
 }
 ``````
+
+## Service Compartilhando informações
+### service
+````
+
+import { EventEmitter, Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MycoursesService {
+
+  listNewCurseCreated = new EventEmitter(); // vai ficar escutando uma mudança
+
+  listCourse: string[] = ['Java', 'C#','PHP', 'C++','C'];
+
+  constructor() { }
+
+  onNewCourse(course: string){
+    this.listCourse.unshift(course);
+    this.listNewCurseCreated.emit(course); // emitindo a mudança
+  }
+}
+
+````
+
+### pegando a mudança
+````
+export class ViewCourseCreatedComponent implements OnInit {
+
+  listNewCourse : string[] = [];
+
+  constructor(private service: MycoursesService) { }
+
+  ngOnInit(): void {
+    this.service.listNewCurseCreated.subscribe(x => {
+        this.listNewCourse.push(x);
+
+      })
+  }
+
+}
+````
