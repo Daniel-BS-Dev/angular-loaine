@@ -1,17 +1,20 @@
-import { Directive, HostBinding, HostListener } from '@angular/core';
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appDirectBackground]'
 })
 export class DirectBackgroundDirective {
 
+ @Input() colorDefault: string = 'white';
+ @Input() colorChange: string = 'yellow';
+
   // ouvindo um evento
   @HostListener('mouseenter') onMouseOver(){
-    this.background='yellow';
+    this.background= this.colorChange;
   }
 
   @HostListener('mouseleave') onMouseLeave(){
-   this.background='white';
+   this.background= this.colorDefault;
   }
 
   // mudando o background
@@ -19,4 +22,7 @@ export class DirectBackgroundDirective {
 
   constructor() { }
 
+  ngOnInit(): void {
+    this.background = 'blue';
+  }
 }

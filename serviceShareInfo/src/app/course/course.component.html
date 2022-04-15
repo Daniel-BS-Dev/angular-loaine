@@ -1,0 +1,9 @@
+<input type="text" #newCourse>
+<button (click)="onNewCourse(newCourse.value)">Adicionar</button>
+
+<ul *ngFor="let course of myListCourse">
+  <li>{{ course }}</li>
+</ul>
+
+<h1>Novos Cursos</h1>
+<app-view-course-created></app-view-course-created>
