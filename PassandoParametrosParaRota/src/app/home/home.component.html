@@ -1,0 +1,8 @@
+<section>
+  <input type="text" #catchValue />
+  <router-outlet></router-outlet>
+</section>
+
+<section>
+    <a [routerLink]="[ 'curso', catchValue.value ]">name</a>
+</section>
