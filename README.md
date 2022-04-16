@@ -193,3 +193,49 @@ id: string='';
   })
   }
 ``````
+
+## Redirecionamento de Rotas
+### Service
+````
+ courses: any[]=[];
+
+  constructor() { }
+
+  getCourses(){
+    return [
+      {id:1, name: 'Java'},
+      {id:2, name: 'Angular'}
+    ]
+  }
+
+
+hasCourse(id : number){
+    this.courses = this.getCourses();
+    for(let i=0; i< this.courses.length; i++){
+      let course = this.courses[i];
+      if(course.id == id){
+        return course;
+      }
+    }
+    return null;
+  }
+  ``````
+  
+  ### Redirecionamento
+  ````
+id: number=0;
+  course: any ='';
+
+  constructor(private service: CourseService, private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: any) => {
+      this.id = params['id'];
+      this.course = this.service.hasCourse(this.id);
+
+      if(this.course == null){
+        this.router.navigate(['notFound']);
+      }
+    })
+  }
+  ````
