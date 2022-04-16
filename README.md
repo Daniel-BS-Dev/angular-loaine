@@ -239,3 +239,29 @@ id: number=0;
     })
   }
   ````
+
+## QueryParams
+### Template
+````
+<a routerLink="/course" [queryParams]="{pagina:1}">my routing</a>
+<button (click)="nextPage()">proxima pagina</button>
+````
+### Component
+````
+  page: number=0;
+
+  constructor(private route: ActivatedRoute, private router: Router) { }
+
+  // obtendo o paramento da url
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((queryParams: any)=>{
+      this.page = queryParams['pagina'];
+    })
+  }
+
+  // butão para proxima pagina
+  nextPage(){
+   this.router.navigate(['/course'], {queryParams: {'pagina': ++this.page}})
+  }
+
+````
