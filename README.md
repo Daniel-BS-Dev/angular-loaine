@@ -158,3 +158,38 @@ export class ViewCourseCreatedComponent implements OnInit {
 
 }
 ````
+
+## Pegando parametro da rota
+### routing
+````
+{path:'curso/:id', component: PegandoParametroComponent }
+``````
+### RoutingWay
+````
+<section>
+  <input type="text" #catchValue />
+  <router-outlet></router-outlet>
+</section>
+
+<section>
+    <a [routerLink]="[ 'curso', catchValue.value ]">name</a>
+</section>
+``````
+### AddRoutingInVariable
+````
+id: string='';
+
+  constructor(private route: ActivatedRoute) {
+   
+   }
+
+  ngOnInit(): void {
+    //**** essa forma se houver mudaça no id dps da inicialização meu id continua sendo o mesmo **** //
+    // this.id = this.route.snapshot.params['id']; 
+  
+  // ****resolvendo esse problema**** //
+  this.route.params.subscribe((params: any) => {
+    this.id = params['id'];
+  })
+  }
+``````
