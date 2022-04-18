@@ -23,7 +23,7 @@ import { StudantService } from './studant.service';
   providers: [StudantService] // declarrando o meu service aqui eu posso usar ele apenas no meu studant
 
 })
-export class StudantModule { }
+export class StudantModule { } // no meu module principal no imports colocar o meu StudantModule
 ``````
 
 ## routing
@@ -51,3 +51,15 @@ const studantesRoutes: Routes = [
 })
 export class studantRoutingModule { } // essa rota deve ser importada na meu modulo de alunos
 ````
+
+## Lazing load
+- primeira coisa é separa a aplicação em module
+- no module raiz
+````
+const routes: Routes = [
+  { path: 'cursos', loadChildren: () => import('./studant/studant.module').then(m => m.StudantModule)},
+];
+````
+- Quando eu uso o lazing loading não posso ter import do meu module em outro lugares
+- devo tirar o meu import dos modulos
+- dentro do meu routing devo remover o nome principal da minha rota
