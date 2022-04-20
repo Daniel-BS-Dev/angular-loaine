@@ -130,3 +130,84 @@ password='';
 <app-header *ngIf="showMenu"></app-header>
 <router-outlet></router-outlet>
 ``````
+
+## Guarda de Routas
+### criar um serviço
+````
+import { AuthService } from './../login/auth.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+
+  constructor(private service: AuthService, private route: Router) { }
+  
+  // quando eu uso o CanActivate preciso implementar esse metodo
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | boolean {
+      if(this.service.userIsAuthenticated()){
+        return true;
+      }
+
+      this.route.navigate(['/login'])// se o usuario não estiver logado vou força ele a voltar a pagina de login
+      return false;
+  }
+}
+````
+### minha classe servico de login
+````
+import { Router } from '@angular/router';
+import { Injectable, EventEmitter } from '@angular/core';
+import { User } from './user';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private AuthenticatedUser: boolean = false;
+
+  // com esse evento eu mostro o header ou não, o meu ts principal eu uso esse evento
+  showMenuEmitter = new EventEmitter<boolean>();
+
+  constructor(private router: Router) { }
+
+  doLogin(user: User){
+    if(user.name === 'usuario@gmail.com' && user.password === '123456'){
+      this.AuthenticatedUser = true;
+     
+      this.showMenuEmitter.emit(true);
+
+      this.router.navigate(['/studant'])
+    }else{
+      this.AuthenticatedUser = false;
+      this.showMenuEmitter.emit(false);
+    }
+  }
+
+// metodo responsavel por returna se o usuario esta autenticado ou não
+  userIsAuthenticated(){
+    return this.AuthenticatedUser; 
+  }
+
+}
+``````
+
+### rotas
+````
+const routes: Routes = [
+  // vou colocar o canActived em todas as rotas que eu quero que sejam acessadas apenas com o login
+  { path: 'studant', loadChildren: () => import('./studant/studant.module').then(m => m.StudantModule), canActivate:[AuthGuard]},
+  {path:'login', component: LoginComponent}
+];
+````
+
+### modulo
+````
+providers: [AuthService, AuthGuard], // tenho que colocar o meu AuthGuard no meu modulo principal
+````
