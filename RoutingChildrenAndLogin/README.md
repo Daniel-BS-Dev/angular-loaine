@@ -211,3 +211,5 @@ const routes: Routes = [
 ````
 providers: [AuthService, AuthGuard], // tenho que colocar o meu AuthGuard no meu modulo principal
 ````
+
+## CanActivatedChild
