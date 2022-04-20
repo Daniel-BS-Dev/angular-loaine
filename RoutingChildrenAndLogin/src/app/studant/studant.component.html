@@ -1,2 +1,6 @@
-<a *ngFor="let s of listStudants" [routerLink]="[s.id]">{{ s.name }}</a><!-- como e routa filha eu não preciso passar o /studants -->
+<!-- como e routa filha eu não preciso passar o /studants -->
+<div class="collection container">
+    <a *ngFor="let s of listStudants" routerLinkActive="active" class="collection-item" [routerLink]="[s.id]">{{ s.name }}</a>
+  </div>
+
 <router-outlet></router-outlet>

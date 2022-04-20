@@ -6,15 +6,25 @@ import { Injectable } from '@angular/core';
 export class StudantService {
 
   studants: any[] = [
-    {name: 'Pedro', age: 24, email: "p@gmail.com"},
-    {name: 'Daniel', age: 24, email: "p@gmail.com"},
-    {name: 'Paulo', age: 24, email: "p@gmail.com"},
-    {name: 'Marcos', age: 24, email: "p@gmail.com"}
+    {id: 1, name: 'Pedro', age: 24, email: "p@gmail.com"},
+    {id: 2, name: 'Daniel', age: 25, email: "daniel@gmail.com"},
+    {id: 3, name: 'Paulo', age: 30, email: "paulo@gmail.com"},
+    {id: 4, name: 'Marcos', age: 15, email: "marcos@gmail.com"}
   ]
 
   constructor() { }
 
   getStudants(){
     return this.studants;
+  }
+
+  getStudant(id: number){
+    for(let i =0; i < this.studants.length; i++){
+      let studant = this.studants[i];
+      if(studant.id == id){
+        return studant;
+      }
+    }
+    return null;
   }
 }

@@ -1,1 +1,22 @@
-<p>login works!</p>
+<form class="container" (ngSubmit)="doLogin()">
+    <label class="active" for="usuario">Usuario</label>
+  <input
+    type="text"
+    id="Email"
+    class="validate"
+    name="name"
+    [(ngModel)]="user.name"
+  />
+  <label class="active" for="Senha">Usuario</label>
+  <input
+  type="password"
+  id="password"
+  class="validate"
+  name="password"
+  [(ngModel)]="user.password"
+/>
+
+<button class="btn waves-effect waves-light" type="submit" name="action">Entrar
+    <i class="material-icons right">send</i>
+</button>
+</form>

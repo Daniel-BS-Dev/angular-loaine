@@ -1,24 +1,28 @@
-import { StudantModule } from './studant/studant.module';
+import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CourseComponent } from './course/course.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthService } from './login/auth.service';
+import { FormsModule } from '@angular/forms';
+//import { StudantModule } from './studant/studant.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseComponent,
     LoginComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
-    StudantModule, // importando o modulo de studant 
-    AppRoutingModule
+    // StudantModule, // importando o modulo de studant 
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

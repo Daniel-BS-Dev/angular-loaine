@@ -6,7 +6,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 const studantesRoutes: Routes = [
   // declarando minhas rotas como rotas filhas. sempre vai mostrar o component pai o um dos filhos
+  /* sem o laying 
   {path: 'studant', component: StudantComponent, children: [
+    {path: 'new', component: StudantFormComponent},
+    {path: ':id', component: StudantDetailsComponent},
+    {path: ':id/edit', component: StudantFormComponent}
+  ]},
+  */
+
+  // com o laying
+  {path: '', component: StudantComponent, children: [
     {path: 'new', component: StudantFormComponent},
     {path: ':id', component: StudantDetailsComponent},
     {path: ':id/edit', component: StudantFormComponent}
