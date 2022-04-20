@@ -63,3 +63,70 @@ const routes: Routes = [
 - Quando eu uso o lazing loading não posso ter import do meu module em outro lugares
 - devo tirar o meu import dos modulos
 - dentro do meu routing devo remover o nome principal da minha rota
+
+## Login, Mostrar menu
+### classe ts
+````
+user: User = new User();
+
+  constructor(private service: AuthService) {
+  
+   }
+
+  ngOnInit(): void {
+  }
+
+  doLogin(){
+    this.service.doLogin(this.user);
+  }
+````
+### Atributos
+``````
+export class User {
+name= '';
+password='';
+}
+``````
+### Service
+``````
+
+ private AuthenticatedUser: boolean = false;
+
+  // com esse evento eu mostro o header ou não, no meu ts principal eu uso esse evento
+  showMenuEmitter = new EventEmitter<boolean>();
+
+  constructor(private router: Router) { }
+
+  doLogin(user: User){
+    if(user.name === 'usuario@gmail.com' && user.password === '123456'){
+      this.AuthenticatedUser = true;
+     
+      this.showMenuEmitter.emit(true);
+
+      this.router.navigate(['/studant'])
+    }else{
+      this.AuthenticatedUser = false;
+      this.showMenuEmitter.emit(false);
+    }
+  }
+``````
+### Ts principal
+````
+ showMenu: boolean = false;
+
+  constructor(private service: AuthService){
+
+  }
+
+  ngOnInit(): void {
+    this.service.showMenuEmitter.subscribe(show => {
+      this.showMenu = show;
+    });
+    
+  }
+``````
+### Html onde esta o menu
+````
+<app-header *ngIf="showMenu"></app-header>
+<router-outlet></router-outlet>
+``````
