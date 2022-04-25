@@ -213,3 +213,49 @@ providers: [AuthService, AuthGuard], // tenho que colocar o meu AuthGuard no meu
 ````
 
 ## CanActivatedChild
+### CourseGuard
+````
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class CourseGuard implements CanActivateChild {
+
+  constructor() { }
+  
+  // quando eu uso o CanActivate preciso implementar esse metodo
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+    ): Observable<boolean> | boolean {
+        console.log(route)
+        console.log(state)
+
+
+        // verificando se a url tem o editar e returnando false
+        if(state.url.includes("editar")){
+            return false;
+        }
+        return true;
+       
+    
+  }
+}
+````
+
+### module
+````
+ providers: [AuthService, AuthGuard, CourseGuard],
+````
+### routing
+````
+const routes: Routes = [
+  // vou colocar o canActived em todas as rotas que eu quero que sejam acessadas apenas com o login
+  { path: 'studant', loadChildren:() => import('./studant/studant.module').then(m => m.StudantModule),
+    canActivate:[AuthGuard],
+    canActivateChild:[CourseGuard]
+  },
+  {path:'login', component: LoginComponent}
+];
+````
