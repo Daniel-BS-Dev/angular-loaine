@@ -254,8 +254,11 @@ const routes: Routes = [
   // vou colocar o canActived em todas as rotas que eu quero que sejam acessadas apenas com o login
   { path: 'studant', loadChildren:() => import('./studant/studant.module').then(m => m.StudantModule),
     canActivate:[AuthGuard],
-    canActivateChild:[CourseGuard]
+    canActivateChild:[CourseGuard] // se eu quero que todas as rotas recebam essa proteção uso aqui, agora se apenas as filhas uso na rota de alunos
   },
   {path:'login', component: LoginComponent}
 ];
 ````
+
+## CanDeactivate
+
