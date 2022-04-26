@@ -260,5 +260,75 @@ const routes: Routes = [
 ];
 ````
 
-## CanDeactivate
+## CanDeactivate Exemplo: usuário deseja sair e perde o que digitou
+* service GuardRouting
+``````
+import { CanDeactivatedComponent } from './can-deactivated/can-deactivated.component';
+import { Injectable, Component } from '@angular/core';
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { EditaComponent } from './canDeactivated/edita/edita.component';
 
+@Injectable()
+export class FormRoutingGuard implements CanDeactivate<EditaComponent> {
+
+  canDeactivate(
+    component: EditaComponent, // nome do meu componente
+    route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot, 
+    ): Observable<boolean> | Promise<boolean> | boolean {
+      console.log("canDeactivated")
+    //return !component.formChange; // se o form mudou eu não posso mudar a rota
+      return component.canChange();
+  }
+}
+``````
+
+* module.ts
+``````
+providers: [FormRoutingGuard], // posso usar em um escopo local
+``````
+* Routing.ts
+``````
+const routes: Routes = [
+  {path:'edit', component: EditaComponent,
+    canDeactivate: [FormRoutingGuard]
+  }
+ 
+];
+``````
+
+* Component.html
+``````
+<form>
+    <input type="text" (input)="onInput()"> <!-- escutando um evento de input -->
+</form>
+<a  routerLink="/">editar</a>
+``````
+
+Component.ts
+``````
+private formChange : boolean = false;
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  onInput()
+{
+   this.formChange=true;
+   console.log("mudou")
+
+}
+   canChange(){
+    let leave = confirm('Quero sair');
+     if(leave){
+      console.log("true")
+      return true;
+     
+     }
+     console.log("false")
+     return false;
+   }
+  
+``````
