@@ -332,3 +332,55 @@ private formChange : boolean = false;
    }
   
 ``````
+
+## Interface Deactivated routing
+* Criando a interface
+``````
+export interface IFormCanDeactivate {
+    canDeactivateRouting(): boolean;
+}
+``````
+* ServiceGuardRouting
+`````
+import { Injectable, Component } from '@angular/core';
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { IFormCanDeactivate } from './Iform-canDeactivated';
+
+@Injectable()
+export class FormRoutingGuard implements CanDeactivate<IFormCanDeactivate> {
+
+  canDeactivate(
+    component: IFormCanDeactivate, // nome do meu componente
+    route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot, 
+    ): Observable<boolean> | Promise<boolean> | boolean {
+      console.log("canDeactivated")
+       
+      return component.canDeactivateRouting();
+  }
+}
+`````
+* component.ts
+``````
+export class EditaComponent implements OnInit, IFormCanDeactivate {
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+canDeactivateRouting(){
+    let leave = confirm('Quero sair');
+     if(leave){
+      console.log("true")
+      return true;
+     
+     }
+     console.log("false")
+     return false;
+   }
+  
+}
+``````
