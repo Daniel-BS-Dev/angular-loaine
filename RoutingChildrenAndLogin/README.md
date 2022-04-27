@@ -384,3 +384,4 @@ canDeactivateRouting(){
   
 }
 ``````
+## Guarda de Rotas: Resolve: carregando dados antes da rota ser ativada
