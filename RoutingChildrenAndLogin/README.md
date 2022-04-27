@@ -384,4 +384,47 @@ canDeactivateRouting(){
   
 }
 ``````
-## Guarda de Rotas: Resolve: carregando dados antes da rota ser ativada
+##  Usando Guarda de Rotas: CanLoad: como não carregar o módulo sem permissão
+* Service Load
+````
+import { Injectable } from '@angular/core';
+import { CanLoad, Route, UrlSegment, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class LoadService implements CanLoad {
+
+  constructor() { }
+
+  canLoad(route: Route):
+  Observable<boolean> | Promise<boolean> | boolean{
+    return this.verificar(); // metodo que tem dentro dele a logica de login o mesmo da liberação de menu
+  }
+}
+`````
+* Module
+````
+ providers: [LoadService]
+`````
+* Routing
+````
+const routes: Routes = [
+  {path:'edit', component: EditaComponent,
+    canLoad:[LoadService]
+  }
+ 
+];
+`````
+## Definindo rota padrão e wildcard (rota não encontrada)
+* Criar um component que terá o conteúdo de não encontrada
+* obs: declara caminho vazio e pagina não encontrada no final da rota
+````
+  {path:'**', component: NotFoundPage}
+`````
+* Ou posso redirecionar ele para a pagina de login
+
+## Redirecionamento de rota
+** Se a rota estiver vazia
+````
+{path:'', redirectTO: '/home', patMatch:'full'} 
+`````
